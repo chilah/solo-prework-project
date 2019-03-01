@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Signika:300,400');
 
+html, body {
+    scroll-behavior: smooth;
+}
 
 body {
     padding: 0;
@@ -33,7 +36,7 @@ header {
 
 .home {
     background-color:#55c0ec;
-    min-height: calc(100vh - 12rem);
+    min-height: 75vh;
     text-align: center;
     display: flex;
     align-items: center;
@@ -52,40 +55,7 @@ header {
     margin: 0;
     opacity: 0.6;
     font-weight: 300;
-    animation: slidedown_text 1.5s forwards;
-}
-
-@keyframes slidedown_text {
-    0% {
-        transform: translateY(0%);
-    }
-
-    50% {
-        opacity: 0;
-        transform: translateY(-20%);
-    }
-
-    100% {
-        opacity: 0.6;
-        transform: translateY(0%);
-    }
-}
-
-@keyframes slidedown {
-    0% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
-
-    50% {
-        opacity: 0;
-        transform: translateY(-20%);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
+    animation: slidedown_text 3s forwards;
 }
 
 .home-title p {
@@ -94,7 +64,7 @@ header {
     color: white;
     padding: 1rem 0 1rem 0;
     max-width: 575px;
-    animation: slidedown 2s forwards; 
+    animation: slidedown 3s forwards; 
 }
 
 .add-btn {
@@ -106,17 +76,22 @@ header {
     justify-content: center;
     align-items: center;
     border-radius: 0.3rem;
-    animation: slidedown 1s forwards;
+    animation: slidedown 3s forwards;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    opacity: 0.8;
 }
 
 .slack-logo {
     width: 50px;
     margin-right: 1rem;
+    transition: 0.5s;
 }
 
-.add-btn:hover {
-    opacity: 0.8;
-    cursor: pointer;
+.slack-logo:hover {
+    transform: scale(1.3) rotate(18deg);
 }
 
 .add-btn a {
@@ -128,7 +103,7 @@ header {
 .robot-svg {
     width: 300px;
     margin: auto;
-    animation: slidedown 4s forwards;
+    animation: slidedown 3s forwards;
 }
 
 .robot-svg img {
@@ -141,14 +116,16 @@ header {
 
 .showbtn {
     width: 50px;
+    padding: 0.5rem;
     position: fixed;
     bottom: 1.5rem;
     right: 1.5rem;
-    background: salmon;
+    background: rgb(255, 201, 100);
     border-radius: 10px;
-    border: 2px solid salmon;
+    border: none;
     outline: none;
     transition: .3s;
+    cursor: pointer;
 }
 
 .showbtn:hover {
@@ -160,7 +137,7 @@ header {
     font-size: 2rem;
     margin-bottom: 0;
     position: relative;
-    animation: slidedown 4.5s forwards;
+    animation: slidedown 3s forwards;
 }
 
 .about h1::after {
@@ -178,7 +155,7 @@ header {
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
-    padding: 1.5rem;
+    padding: 2rem;
     font-size: 1.2rem;
     font-weight: 100;
     opacity: 0.8;
@@ -209,7 +186,7 @@ header {
 .feature-grid {
     margin: 2rem;
     display: grid;
-    grid-template-columns: minmax(290px, 700px);
+    grid-template-columns: minmax(290px, 600px);
     grid-auto-rows: auto;
     grid-gap: 3rem;
     justify-content: center;
@@ -218,6 +195,11 @@ header {
 .feature-item {
     border-radius: 0.4rem;
     background-color: #40596b;
+    
+}
+
+.animate {
+    animation: fadeIn 2s forwards;
 }
 
 .feature-item-top {
@@ -225,7 +207,7 @@ header {
 }
 
 .feature-img {
-    max-width: 250px;
+    max-width: 200px;
     margin: auto;
 }
 
@@ -309,6 +291,59 @@ footer a {
     color: white;
 }
 
+@keyframes slidedown_text {
+    0% {
+        transform: translateY(0%);
+    }
+
+    25% {
+        transform: translateY(5%);
+    }
+
+    50% {
+        opacity: 0;
+        transform: translateY(-20%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slidedown {
+    0% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+
+    25% {
+        opacity: 0.5;
+        transform: translateY(5%);
+    }
+
+    50% {
+        opacity: 0;
+        transform: translateY(-20%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
 @media (min-width: 1000px) {
     .wrapper-home {
         flex-direction: row;
@@ -320,8 +355,8 @@ footer a {
     }
 
     .about-paragraph {
-        padding: 2rem 5rem;
-        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        grid-template-columns: repeat(2, 500px);
         grid-gap: 1rem;
     }
 
@@ -330,7 +365,7 @@ footer a {
     }
 
     .feature-grid {
-        grid-template-columns: 450px 450px;
+        grid-template-columns: repeat(2, 400px);
     }
 
     .feature-grid .feature-item:nth-child(3) {
@@ -340,10 +375,11 @@ footer a {
 
 @media (min-width: 1200px) {
     .feature-grid {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 350px);
     }
 
     .feature-grid .feature-item:nth-child(3) {
         grid-column: 3/-1;
     }
 }
+
