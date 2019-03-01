@@ -9,7 +9,7 @@ function showBtn() {
     let scrollPosition = document.documentElement.scrollTop;
     
     // Show gotopbutton when window scroll more than 350
-    // and add fadein animate for item in the feature section.
+    // and add fadeIn animate for item in the feature section.
     // if less than 350 hide button  
     if (scrollPosition > 350)  {
         btn.classList.remove('gotopbtn');
@@ -22,8 +22,8 @@ function showBtn() {
     }
 }
 
-// Add event for go top button to move to the top
-// of page. Use top: 0 for a position of page.
+// Add event for go top button when clicked it will move to the top of page. 
+// Use top: 0 for a position of page.
 btn.addEventListener('click', scrollToTop);
 
 function scrollToTop() {
