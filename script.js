@@ -1,5 +1,4 @@
 const btn = document.getElementById('btn');
-const titleText = document.querySelector('.home-title h1');
 const featureItem = document.querySelectorAll('.feature-item');
 
 window.onscroll = function() {
@@ -9,16 +8,22 @@ window.onscroll = function() {
 function showBtn() {
     let scrollPosition = document.documentElement.scrollTop;
     
-    if (scrollPosition > 300)  {
-        btn.className = 'showbtn'; 
-        titleText.className = 'slideDown'; 
+    // Show gotopbutton when window scroll more than 350
+    // and add fadein animate for item in the feature section.
+    // if less than 350 hide button  
+    if (scrollPosition > 350)  {
+        btn.classList.remove('gotopbtn');
+        btn.classList.add('showbtn');  
 
-        featureItem.forEach(item => item.classList.add('animate'))
-    } else {
-        btn.className = 'gotopbtn';
+        featureItem.forEach(item => item.classList.add('animate'));
+    } else {      
+        btn.classList.remove('showbtn');
+        btn.classList.add('gotopbtn');
     }
 }
 
+// Add event for go top button to move to the top
+// of page. Use top: 0 for a position of page.
 btn.addEventListener('click', scrollToTop);
 
 function scrollToTop() {
